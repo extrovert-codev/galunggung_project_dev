@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:m_galunggung99/Attendance/myattendance.dart';
 import 'package:m_galunggung99/_GlobalScript.dart';
 import 'package:m_galunggung99/Home/homedirut.dart';
@@ -10,6 +11,9 @@ import 'package:m_galunggung99/Home/homemarketing.dart';
 import 'package:m_galunggung99/Home/homeoprasional.dart';
 import 'package:m_galunggung99/Profil/profil.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
+
+import 'Listing/approvelisting.dart';
+import 'Listing/listlistingmenu.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -66,7 +70,14 @@ class _DashboardState extends State<Dashboard> {
       // will be called whenever a notification is opened/button pressed.
       print("onSetNotificationOpen");
 
-      print(c['page']);
+      if(c['type'] == "get_approve"){
+        print('here');
+        Get.to(ApproveListing());
+      }else if(c['type'].toString() == "approved"){
+        Get.to(ListListingMenu());
+      }else{
+        print(c['type']);
+      }
     });
 
     OneSignal.shared.setPermissionObserver((OSPermissionStateChanges changes) {

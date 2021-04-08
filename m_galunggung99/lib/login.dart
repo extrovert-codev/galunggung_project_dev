@@ -155,11 +155,13 @@ class _LoginState extends State<Login> {
             _simpan('email', loginModel.email);
             _simpan('name', loginModel.name);
             _simpan('position_id', loginModel.positionID);
+            _simpan('onesignal_id', loginModel.onesignalID);
 
             _gScript.myEmpID = loginModel.employeeID;
             _gScript.myEmail = loginModel.email;
             _gScript.myName = loginModel.name;
             _gScript.myPositionID = loginModel.positionID;
+            _gScript.myOnesignal = loginModel.onesignalID;
 
             Get.off(Dashboard());
           } else {

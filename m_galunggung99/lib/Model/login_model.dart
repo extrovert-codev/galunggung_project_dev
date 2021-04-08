@@ -4,7 +4,7 @@ import 'package:m_galunggung99/_GlobalScript.dart' as gScript;
 import 'package:http/http.dart' as http;
 
 class LoginModel {
-  String employeeID, name, email, password, positionID, image;
+  String employeeID, name, email, password, positionID, image, onesignalID;
 
   LoginModel(
       {this.employeeID,
@@ -12,7 +12,8 @@ class LoginModel {
       this.email,
       this.password,
       this.positionID,
-      this.image});
+      this.image,
+      this.onesignalID});
 
   factory LoginModel.getLogin(Map<String, dynamic> object) {
     return LoginModel(
@@ -21,7 +22,8 @@ class LoginModel {
         email: object['email'],
         password: object['password'],
         positionID: object['position_id'],
-        image: object['image']);
+        image: object['image'],
+        onesignalID: object['onesignal_id']);
   }
 
   static Future<LoginModel> execAPI(String email) async {
