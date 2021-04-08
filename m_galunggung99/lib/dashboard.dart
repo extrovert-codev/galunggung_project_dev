@@ -61,22 +61,24 @@ class _DashboardState extends State<Dashboard> {
     await OneSignal.shared.promptUserForPushNotificationPermission(fallbackToSettings: true);
     OneSignal.shared.setNotificationReceivedHandler((OSNotification notification) {
       // will be called whenever a notification is received
-      print("onSetNotificationReceive");
+      // print("onSetNotificationReceive");
       c = notification.payload.additionalData;
-      print(c);
+      // print(c);
     });
 
     OneSignal.shared.setNotificationOpenedHandler((OSNotificationOpenedResult result) {
       // will be called whenever a notification is opened/button pressed.
-      print("onSetNotificationOpen");
+      // print("onSetNotificationOpen");
 
       if(c['type'] == "get_approve"){
-        print('here');
+        // print('here');
         Get.to(ApproveListing());
       }else if(c['type'].toString() == "approved"){
-        Get.to(ListListingMenu());
-      }else{
-        print(c['type']);
+        Get.to(ListListingMenu(initialIndex: 1));
+      }else if(c['type'].toString() == "tidak_lengkap"){
+        Get.to(ListListingMenu(initialIndex: 2));
+      }else if(c['type'].toString() == "cancel"){
+        Get.to(ListListingMenu(initialIndex: 3));
       }
     });
 

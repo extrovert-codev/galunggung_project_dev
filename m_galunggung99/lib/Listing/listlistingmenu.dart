@@ -5,17 +5,24 @@ import 'package:m_galunggung99/Listing/listlistingpending.dart';
 import 'package:m_galunggung99/Listing/listlistingtidaklengkap.dart';
 
 class ListListingMenu extends StatefulWidget {
+  final int initialIndex;
+
+  ListListingMenu({Key key, this.initialIndex}) : super(key: key);
   @override
-  _ListListingMenuState createState() => _ListListingMenuState();
+  _ListListingMenuState createState() => _ListListingMenuState(initialIndex: initialIndex);
 }
 
 class _ListListingMenuState extends State<ListListingMenu>
     with SingleTickerProviderStateMixin {
   TabController tabController;
 
+  final int initialIndex;
+
+  _ListListingMenuState({this.initialIndex});
+
   @override
   void initState() {
-    tabController = TabController(vsync: this, length: 4);
+    tabController = TabController(initialIndex: initialIndex??0, vsync: this, length: 4);
     super.initState();
   }
 

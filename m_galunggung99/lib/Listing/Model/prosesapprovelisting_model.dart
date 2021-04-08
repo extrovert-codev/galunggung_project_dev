@@ -17,6 +17,10 @@ class ProsesApproveListingModel {
 
   static Future<ProsesApproveListingModel> execAPIPut(
       listingID, listingStatusID) async {
+    (myPositionID == '1' || myPositionID == '9')
+        ? listingStatusID = 4
+        : (myPositionID == '11')
+        ? listingStatusID = listingStatusID : listingStatusID = 0;
     String apiURL = apiLink + '/Listing';
     var result = await http.put(apiURL, headers: {
       'Authorization': 'Basic ZVh0cm92ZXJ0Q29EZXY6bSFuIW00UDEyNw==',
